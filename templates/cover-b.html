@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>AlleyPin 封面 B（全藍幾何拼塊）</title>
+<!--
+  封面 B：左側純藍放文字 + 右側幾何拼塊（#1C3667 直欄＋橫條、主藍半圓拱、底部淺藍三角＋#1C3667 直欄）
+  整組貼齊上/下/右緣。字體規則同封面 A。
+-->
+<style>
+  :root{--blue:#1D4A82;--navy:#14203C;--bluemid:#1C3667;--bluelt:#7DAEF9;--orange:#F19D48;--orange-d:#D95F39;--green:#A9CB75;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{margin:0;font-family:"Noto Sans TC",-apple-system,"PingFang TC",sans-serif}
+  .slide{width:1280px;height:720px;background:var(--blue);position:relative;overflow:hidden}
+  .motif{position:absolute;inset:0;width:1280px;height:720px;pointer-events:none}
+  .bigtitle{position:absolute;left:96px;top:196px;max-width:620px}
+  .bigtitle h1{color:#fff;font-size:50px;font-weight:800;line-height:1.18;letter-spacing:.01em;
+               font-family:"Noto Sans TC",sans-serif}
+  .tick{position:absolute;left:96px;top:356px;width:34px;height:44px}
+  .subwrap{position:absolute;left:96px;top:420px;max-width:600px}
+  .subwrap .sub{color:#BFD3E8;font-size:21px;font-weight:500;line-height:1.5}
+  .subwrap .line{width:520px;height:2px;background:rgba(255,255,255,.5);margin-top:24px}
+  .brandrow{position:absolute;left:96px;bottom:56px;display:flex;align-items:center;gap:22px}
+  .brandrow img{height:42px;display:block}
+  .brandrow .tag{color:#9FBAD6;font-size:15px;letter-spacing:.04em;border-left:1px solid rgba(255,255,255,.3);padding-left:22px}
+</style>
+</head>
+<body>
+  <div class="slide">
+    <svg class="motif" viewBox="0 0 1280 720">
+      <!-- 直欄：最上/最下直式長方形 #1C3667，中間橫條 -->
+      <rect x="763" y="0" width="175" height="386" fill="#1C3667"/>
+      <rect x="763" y="386" width="175" height="36" fill="#14203C"/>
+      <rect x="763" y="435" width="175" height="25" fill="#1D4A82"/>
+      <rect x="763" y="463" width="175" height="30" fill="#7DAEF9"/>
+      <rect x="763" y="498" width="175" height="26" fill="#1D4A82"/>
+      <rect x="763" y="547" width="175" height="173" fill="#1C3667"/>
+      <!-- 右上：淺藍底 + 主藍半圓拱（左貼直欄、右貼右緣、上貼上緣） -->
+      <rect x="938" y="0" width="342" height="423" fill="#7DAEF9"/>
+      <path d="M938,423 L938,171 A171,171 0 0 1 1280,171 L1280,423 Z" fill="#1D4A82"/>
+      <!-- 右下：左下淺藍三角 + 深藍區 + 最右 #1C3667 直欄 -->
+      <rect x="938" y="423" width="342" height="297" fill="#7DAEF9"/>
+      <polygon points="938,423 1147,423 1147,720 1124,720" fill="#14203C"/>
+      <rect x="1147" y="423" width="133" height="297" fill="#1C3667"/>
+    </svg>
+
+    <div class="bigtitle"><h1>{{大標題 第一行<br>大標題 第二行}}</h1></div>
+    <svg class="tick" viewBox="0 0 34 44"><line x1="2.5" y1="41" x2="29" y2="5" stroke="#F19D48" stroke-width="5" stroke-linecap="round"/></svg>
+    <div class="subwrap">
+      <div class="sub">{{次要標題 一行說明}}</div>
+      <div class="line"></div>
+    </div>
+    <div class="brandrow">
+      <img src="assets/alleypin_logo_white.png" alt="AlleyPin">
+      <span class="tag">{{版本 / 日期}}</span>
+    </div>
+  </div>
+</body>
+</html>

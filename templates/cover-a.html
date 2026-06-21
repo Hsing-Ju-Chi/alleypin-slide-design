@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>AlleyPin 封面 A（右側幾何 motif）</title>
+<!--
+  封面 A：深藍底 + 右側幾何 motif（橘三角/白條/淺藍圓/深藍半圓/橘半圓，撐滿上下、貼齊右緣）
+  左側文字：大標在斜線上、次標在斜線下（亦可全部放斜線下，見 SKILL.md）
+  字體：標題預設 Noto Sans TC（Google 簡報安全、零修改）。
+        若輸出 PPTX 離線檔且本機已安裝 LINE Seed，可把標題改成 "LINE Seed TW","Noto Sans TC"。
+-->
+<style>
+  :root{--blue:#1D4A82;--navy:#14203C;--bluemid:#1C3667;--bluelt:#7DAEF9;--orange:#F19D48;--orange-d:#D95F39;--green:#A9CB75;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{margin:0;font-family:"Noto Sans TC",-apple-system,"PingFang TC",sans-serif}
+  .slide{width:1280px;height:720px;background:var(--blue);position:relative;overflow:hidden}
+  .motif{position:absolute;inset:0;width:1280px;height:720px;pointer-events:none}
+  .bigtitle{position:absolute;left:96px;top:196px;max-width:860px}
+  .bigtitle h1{color:#fff;font-size:52px;font-weight:800;line-height:1.18;letter-spacing:.01em;
+               font-family:"Noto Sans TC",sans-serif}
+  .tick{position:absolute;left:96px;top:360px;width:34px;height:44px}
+  .subwrap{position:absolute;left:96px;top:424px;max-width:760px}
+  .subwrap .sub{color:#BFD3E8;font-size:22px;font-weight:500;line-height:1.5}
+  .subwrap .line{width:560px;height:2px;background:rgba(255,255,255,.5);margin-top:24px}
+  .brandrow{position:absolute;left:96px;bottom:56px;display:flex;align-items:center;gap:22px}
+  .brandrow img{height:42px;display:block}
+  .brandrow .tag{color:#9FBAD6;font-size:15px;letter-spacing:.04em;border-left:1px solid rgba(255,255,255,.3);padding-left:22px}
+</style>
+</head>
+<body>
+  <div class="slide">
+    <!-- 右側幾何 motif：等比放大群組，最上三角貼齊上緣、最下半圓貼齊下緣、靠右緣 -->
+    <svg class="motif" viewBox="0 0 1280 720">
+      <g transform="translate(-98.6,-19.4) scale(1.077)">
+        <polygon points="1147,18 1147,147 1278,82" fill="#F19D48"/>
+        <rect x="1147" y="190" width="131" height="24" fill="#ffffff"/>
+        <circle cx="1213" cy="313" r="65" fill="#7DAEF9"/>
+        <path d="M1147,411 h131 v40 a65.5,65.5 0 0 1 -131,0 z" fill="#14203C"/>
+        <path d="M1147,549 h131 v72 a65.5,65.5 0 0 1 -131,0 z" fill="#F19D48"/>
+      </g>
+    </svg>
+
+    <div class="bigtitle"><h1>{{大標題 第一行<br>大標題 第二行}}</h1></div>
+    <svg class="tick" viewBox="0 0 34 44"><line x1="2.5" y1="41" x2="29" y2="5" stroke="#F19D48" stroke-width="5" stroke-linecap="round"/></svg>
+    <div class="subwrap">
+      <div class="sub">{{次要標題 一行說明}}</div>
+      <div class="line"></div>
+    </div>
+    <div class="brandrow">
+      <img src="assets/alleypin_logo_white.png" alt="AlleyPin">
+      <span class="tag">{{版本 / 日期}}</span>
+    </div>
+  </div>
+</body>
+</html>

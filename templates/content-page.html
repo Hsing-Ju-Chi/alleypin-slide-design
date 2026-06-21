@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>AlleyPin 內容頁框架</title>
+<!--
+  內容頁固定框架（不要更動）：
+   - 底色 #EDEEF3
+   - 左上小矩形 #1D4A82：貼齊最上緣、左邊距 64px
+   - 底部細藍 bar #1D4A82：左 Noto Sans TC「AlleyPin」、右白色頁碼
+  中間內容區（.body）自由替換；下方卡片/重點帶僅為色彩搭配示意。
+-->
+<style>
+  :root{--blue:#1D4A82;--navy:#14203C;--bluemid:#1C3667;--bluelt:#7DAEF9;--orange:#F19D48;--orange-d:#D95F39;--green:#A9CB75;
+        --bg:#EDEEF3;--ink:#1B2430;--muted:#6B7480;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{margin:0;font-family:"Noto Sans TC",-apple-system,"PingFang TC",sans-serif}
+  .slide{width:1280px;height:720px;background:var(--bg);position:relative;overflow:hidden}
+
+  /* === 固定框架 === */
+  .corner-rect{position:absolute;left:64px;top:0;width:78px;height:30px;background:var(--blue)}
+  .footer{position:absolute;left:0;right:0;bottom:0;height:40px;background:var(--blue);display:flex;align-items:center}
+  .footer .brand{color:#fff;font-size:15px;font-weight:600;margin-left:40px;letter-spacing:.02em}
+  .footer .pageno{position:absolute;right:24px;color:#fff;font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+
+  /* === 標題（標題字體可換 LINE Seed TW，輸出 Google 簡報則用 Noto Sans TC） === */
+  .title{position:absolute;left:64px;top:54px}
+  .title h1{font-size:32px;font-weight:800;color:var(--navy);font-family:"Noto Sans TC",sans-serif}
+  .title .sub{font-size:16px;color:var(--muted);margin-top:6px;letter-spacing:.04em}
+
+  /* === 內容區（示意） === */
+  .cards{position:absolute;left:64px;top:210px;right:64px;display:flex;gap:24px}
+  .card{flex:1;background:#fff;border-radius:12px;padding:26px;box-shadow:0 4px 14px rgba(29,74,130,.06);position:relative;overflow:hidden}
+  .card .bar{position:absolute;left:0;top:0;width:100%;height:6px;background:var(--orange)}
+  .card:nth-child(2) .bar{background:var(--bluelt)} .card:nth-child(3) .bar{background:var(--orange-d)}
+  .card .k{font-size:14px;font-weight:700;color:var(--blue);letter-spacing:.06em}
+  .card .big{font-size:38px;font-weight:800;color:var(--navy);margin:10px 0 8px;font-variant-numeric:tabular-nums}
+  .card p{font-size:14px;color:var(--muted);line-height:1.7}
+  .band{position:absolute;left:64px;right:64px;top:470px;background:var(--blue);border-radius:12px;padding:24px 30px;color:#fff;font-size:18px;line-height:1.6}
+  .band b{color:var(--orange)}
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="corner-rect"></div>
+    <div class="title"><h1>{{主標題}}</h1><div class="sub">{{副標題 ‧ Subtitle}}</div></div>
+
+    <!-- 內容區（替換成實際內容） -->
+    <div class="cards">
+      <div class="card"><div class="bar"></div><div class="k">{{標籤}}</div><div class="big">{{數字}}</div><p>{{說明}}</p></div>
+      <div class="card"><div class="bar"></div><div class="k">{{標籤}}</div><div class="big">{{數字}}</div><p>{{說明}}</p></div>
+      <div class="card"><div class="bar"></div><div class="k">{{標籤}}</div><div class="big">{{數字}}</div><p>{{說明}}</p></div>
+    </div>
+    <div class="band">{{重點訊息帶，可用 <b>淺橘</b> 強調}}</div>
+
+    <div class="footer">
+      <div class="brand">AlleyPin</div>
+      <div class="pageno">{{頁碼}}</div>
+    </div>
+  </div>
+</body>
+</html>
