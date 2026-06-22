@@ -6,6 +6,8 @@
 
 ## 安裝
 
+> 🔰 **第一次安裝、或要給同事 → 請看 `安裝教學.md`**（新手逐步版：終端機 / Finder / App 匯入 / 貼給 ChatGPT・Magnus 參考，全部都有）。下面是快速版。
+
 **Claude Code（終端）**：把整個 `alleypin-slide-design/` 資料夾放到 `~/.claude/skills/`。
 
 **Chat / Cowork App**：依 App 的 skill / plugin 安裝方式匯入本資料夾（保留 `SKILL.md`、`templates/`、`assets/` 結構）。
