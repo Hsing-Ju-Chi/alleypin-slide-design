@@ -30,7 +30,8 @@ Claude 會：
 | `SKILL.md` | 規範本體：色盤、字體邏輯、封面、內容頁框架、書寫規範、logo |
 | `templates/cover-a.html` | 封面 A（右側幾何 motif） |
 | `templates/cover-b.html` | 封面 B（全藍幾何拼塊） |
-| `templates/content-page.html` | 內容頁固定框架 |
+| `templates/content-page.html` | 內容頁框架（並排卡版型） |
+| `templates/content-rows.html` | 內容頁框架（滿版橫向 row，大氣版；已填真實文案當範例） |
 | `templates/closing-page.html` | 封底 / Thank You 頁（logo lockup＋聯絡人＋聯絡頁尾） |
 | `assets/` | 官方 logo（藍 / 白去背） |
 

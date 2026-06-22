@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>AlleyPin 內容頁 — 滿版橫向 row（大氣版）</title>
+<!--
+  內容頁框架同 content-page.html（底色 #EDEEF3 + 左上貼頂矩形 + 底部藍 footer）。
+  這版內容區用「滿版橫向 row」：細線分隔、主數字放大、無框 → 大氣從容。
+  適合：清單、費率、規格、比較等並列項目。
+  本檔已填真實文案，同時當「書寫規範」的範例（看 10 萬 / NT$5,000 / 0.5% / AlleyPin Nova 等寫法）；
+  實際使用時替換成你的內容、改頁碼。標題字體預設 Noto Sans TC（Google 簡報安全）。
+-->
+<style>
+  :root{--blue:#1D4A82;--navy:#14203C;--bluemid:#1C3667;--bluelt:#7DAEF9;--orange:#F19D48;--orange-d:#D95F39;--green:#A9CB75;
+        --bg:#EDEEF3;--muted:#67727E;--line:#D7DCE4;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{margin:0;font-family:"Noto Sans TC",-apple-system,"PingFang TC",sans-serif}
+  .slide{width:1280px;height:720px;background:var(--bg);position:relative;overflow:hidden}
+  .corner-rect{position:absolute;left:64px;top:0;width:78px;height:30px;background:var(--blue)}
+  .title{position:absolute;left:64px;top:52px;right:64px}
+  .title h1{font-size:31px;font-weight:800;color:var(--navy);font-family:"Noto Sans TC",sans-serif}
+
+  /* 滿版橫向 row */
+  .tiers{position:absolute;left:64px;right:64px;top:166px}
+  .tier{display:grid;grid-template-columns:200px 270px 1fr 150px;gap:28px;align-items:center;padding:30px 6px;border-top:1px solid var(--line)}
+  .tier:last-child{border-bottom:1px solid var(--line)}
+  .tier .name{font-size:18px;font-weight:800;color:var(--navy)}
+  .tier .rate{font-size:54px;font-weight:800;color:var(--navy);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tier .rate small{font-size:18px;color:var(--muted);font-weight:600;margin-left:6px}
+  .tier.hot .rate{color:var(--orange)}          /* 想強調哪一列就加 class="tier hot" */
+  .tier .scope{font-size:14.5px;color:var(--muted);line-height:1.55}
+  .tier .cap{font-size:13px;font-weight:700;color:var(--blue);text-align:right}
+
+  .note{position:absolute;left:64px;right:64px;top:548px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px 28px;font-size:17px;color:var(--navy)}
+  .note b{color:var(--blue)}
+
+  .footer{position:absolute;left:0;right:0;bottom:0;height:40px;background:var(--blue);display:flex;align-items:center}
+  .footer .brand{color:#fff;font-size:15px;font-weight:600;margin-left:40px;letter-spacing:.02em}
+  .footer .pageno{position:absolute;right:24px;color:#fff;font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="corner-rect"></div>
+    <div class="title"><h1>核心回饋機制：刷得越多、回得越多</h1></div>
+
+    <div class="tiers">
+      <div class="tier"><div class="name">參與門檻</div><div class="rate">10<small>萬 / 月</small></div><div class="scope">每月刷指定供應商滿 10 萬，啟動回饋資格。</div><div class="cap">月門檻</div></div>
+      <div class="tier hot"><div class="name">回饋率</div><div class="rate">0.5<small>% 現金回饋</small></div><div class="scope">以 AlleyPin Nova 交易，享現金回饋。</div><div class="cap">無條件回饋</div></div>
+      <div class="tier"><div class="name">每戶每月上限</div><div class="rate">NT$5,000</div><div class="scope">回饋封頂，等於刷卡 100 萬 / 月。</div><div class="cap">每月上限</div></div>
+    </div>
+
+    <div class="note">預估模型：平均每戶每月刷卡 <b>50 萬</b> → 回饋 <b>NT$2,500</b> / 戶 / 月（未達封頂，仍有上衝空間）。</div>
+
+    <div class="footer"><div class="brand">AlleyPin</div><div class="pageno">04 / 10</div></div>
+  </div>
+</body>
+</html>
