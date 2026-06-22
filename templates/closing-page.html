@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>AlleyPin 封底 / Thank You 頁（參考公版 p.62）</title>
+<!--
+  官方收尾頁：左為「白色 logo + 深藍矩形」lockup；右為等高的收尾資訊（標題 + 聯絡人）；
+  底部用聯絡頁尾。無左上小矩形。
+  對齊規則：右側整塊（標題→聯絡人）上緣對齊 lockup 上緣、下緣對齊 lockup 下緣（等高）。
+  字體：標題預設 Noto Sans TC；PPTX 離線可改 LINE Seed TW。
+-->
+<style>
+  :root{--blue:#1D4A82;--navy:#14203C;--bg:#EDEEF3;--muted:#67727E;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{margin:0;font-family:"Noto Sans TC",-apple-system,"PingFang TC",sans-serif}
+  .slide{width:1280px;height:720px;background:var(--bg);position:relative;overflow:hidden}
+
+  .lockup{position:absolute;left:96px;top:226px;width:196px;height:236px;background:var(--blue);
+          display:flex;align-items:center;justify-content:center}
+  .lockup img{width:132px;display:block}
+
+  .thx{position:absolute;left:340px;top:226px}
+  .thx h1{font-size:58px;font-weight:800;color:var(--navy);letter-spacing:.02em;font-family:"Noto Sans TC",sans-serif}
+  .thx .sub{font-size:20px;color:var(--muted);margin-top:14px}
+
+  .person{position:absolute;left:340px;top:370px;display:flex;align-items:center;gap:22px}
+  .person .ava{width:92px;height:92px;border-radius:50%;background:#fff;border:1px solid #D6DCE4;flex:none}
+  .person .nm{font-size:21px;font-weight:800;color:var(--navy)}
+  .person .ti{font-size:15px;color:var(--muted);margin:4px 0 9px}
+  .person .ln{font-size:14px;color:var(--navy);line-height:1.6}
+  .person .ln b{color:var(--muted);font-weight:600;margin-right:8px}
+
+  .footer{position:absolute;left:0;right:0;bottom:0;height:40px;background:var(--blue);display:flex;align-items:center}
+  .footer .brand{color:#fff;font-size:15px;font-weight:600;margin-left:40px;letter-spacing:.02em}
+  .footer .pageno{position:absolute;right:24px;color:#fff;font-size:14px;font-weight:700}
+  .footer-contact{position:absolute;right:24px;bottom:50px;display:flex;align-items:center;gap:16px;font-size:13px;color:var(--navy)}
+  .footer-contact a{color:var(--blue);text-decoration:underline}
+  .footer-contact .fdiv{width:1px;height:13px;background:#B9C2CC;display:inline-block}
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="lockup"><img src="assets/alleypin_logo_white.png" alt="AlleyPin"></div>
+    <div class="thx"><h1>Thank You</h1><div class="sub">{{提案 / 主題名}}</div></div>
+    <div class="person">
+      <div class="ava"></div>
+      <div>
+        <div class="nm">{{聯絡人姓名}}</div>
+        <div class="ti">{{職稱}}</div>
+        <div class="ln"><b>Email</b> {{name@alleypin.com}}</div>
+      </div>
+    </div>
+    <div class="footer-contact"><a href="https://www.alleypin.com/tw">www.alleypin.com/tw</a><span class="fdiv"></span>@alleypin<span class="fdiv"></span>+886 2 2745 7177</div>
+    <div class="footer"><div class="brand">AlleyPin</div><div class="pageno">{{頁碼}}</div></div>
+  </div>
+</body>
+</html>

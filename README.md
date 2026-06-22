@@ -31,6 +31,7 @@ Claude 會：
 | `templates/cover-a.html` | 封面 A（右側幾何 motif） |
 | `templates/cover-b.html` | 封面 B（全藍幾何拼塊） |
 | `templates/content-page.html` | 內容頁固定框架 |
+| `templates/closing-page.html` | 封底 / Thank You 頁（logo lockup＋聯絡人＋聯絡頁尾） |
 | `assets/` | 官方 logo（藍 / 白去背） |
 
 ## 注意
