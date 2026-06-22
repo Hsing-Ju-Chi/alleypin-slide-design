@@ -19,11 +19,11 @@
           display:flex;align-items:center;justify-content:center}
   .lockup img{width:132px;display:block}
 
-  .thx{position:absolute;left:340px;top:226px}
-  .thx h1{font-size:58px;font-weight:800;color:var(--navy);letter-spacing:.02em;font-family:"Noto Sans TC",sans-serif}
+  /* 右側整塊：與 lockup 等高的彈性欄，標題置頂、聯絡人置底，隨標題長度自適應、不重疊 */
+  .rightcol{position:absolute;left:340px;top:226px;right:64px;height:236px;display:flex;flex-direction:column;justify-content:space-between}
+  .thx h1{font-size:58px;font-weight:800;color:var(--navy);letter-spacing:.02em;font-family:"Noto Sans TC",sans-serif;line-height:1.1}
   .thx .sub{font-size:20px;color:var(--muted);margin-top:14px}
-
-  .person{position:absolute;left:340px;top:370px;display:flex;align-items:center;gap:22px}
+  .person{display:flex;align-items:center;gap:22px}
   .person .ava{width:92px;height:92px;border-radius:50%;background:#fff;border:1px solid #D6DCE4;flex:none}
   .person .nm{font-size:21px;font-weight:800;color:var(--navy)}
   .person .ti{font-size:15px;color:var(--muted);margin:4px 0 9px}
@@ -41,13 +41,15 @@
 <body>
   <div class="slide">
     <div class="lockup"><img src="assets/alleypin_logo_white.png" alt="AlleyPin"></div>
-    <div class="thx"><h1>Thank You</h1><div class="sub">{{提案 / 主題名}}</div></div>
-    <div class="person">
-      <div class="ava"></div>
-      <div>
-        <div class="nm">{{聯絡人姓名}}</div>
-        <div class="ti">{{職稱}}</div>
-        <div class="ln"><b>Email</b> {{name@alleypin.com}}</div>
+    <div class="rightcol">
+      <div class="thx"><h1>Thank You</h1><div class="sub">{{提案 / 主題名}}</div></div>
+      <div class="person">
+        <div class="ava"></div>
+        <div>
+          <div class="nm">{{聯絡人姓名}}</div>
+          <div class="ti">{{職稱}}</div>
+          <div class="ln"><b>Email</b> {{name@alleypin.com}}</div>
+        </div>
       </div>
     </div>
     <div class="footer-contact"><a href="https://www.alleypin.com/tw">www.alleypin.com/tw</a><span class="fdiv"></span>@alleypin<span class="fdiv"></span>+886 2 2745 7177</div>
