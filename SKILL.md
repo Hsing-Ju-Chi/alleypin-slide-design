@@ -7,7 +7,7 @@ description: Use when creating, designing, or producing an AlleyPin-branded pres
 *最後更新：2026.7.1*
 
 AlleyPin 品牌簡報 = **深藍主調 + 幾何色塊 + 橘色點綴**，乾淨、專業、留白足。
-用 HTML 當製作原稿（1280×720 / 16:9），再轉成 PPTX 或 Google 簡報。
+用 HTML 當製作原稿（1280×720 / 16:9），再轉成 PPTX、Google 簡報或 Keynote。
 
 **本 skill 管**：AlleyPin 的「品牌視覺」＋「書寫規範」（色盤、字體、封面、內容頁框架、封底、logo、文案）＋ 幾條製作心法。適用**任何主題**。
 **本 skill 不管（你的簡報專業自行判斷）**：內容結構與敘事、版面配置、一頁放幾張卡 / 怎麼排、要不要用圖表。把畫面做好、把故事說好是你的本職；別為套版犧牲表達。
