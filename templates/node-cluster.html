@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>AlleyPin 節點關係圖（中心 + 衛星）</title>
+<!--
+  節點關係圖：一個「中心概念」用虛線連到數個「相關面向」，表達「圍繞核心的關聯」。
+  用法判斷：
+   - 適合「一個主題牽動多個因子」（如：某疾病 ↔ 相關指標 / 一個平台 ↔ 多個能力）。
+   - 衛星 3–4 個最清楚；再多會亂，改用卡片或列表。
+   - 常見組合：左邊放 3–4 條「面向說明」列表，右邊放這張關係圖（本模板即此版式，複刻自脂肪肝 deck p.5）。
+  連接線在 HTML 用 SVG <line> 直接畫，乾淨、不必處理方向。
+  ⚠️ 轉 PPTX/Keynote（pptxgenjs）時：pptx 的 line 是「bounding box 左上→右下」，畫斜線要自己判斷方向——
+     當「衛星在中心右邊」與「衛星在中心下方」其一成立、另一不成立時，要設 flipV:true，線才不會畫反。
+     公式：flipV = ((衛星x > 中心x) !== (衛星y > 中心y))。詳見 SKILL.md「常見錯誤」。
+  字體：標題預設 Noto Sans TC；PPTX/Keynote 可改 "LINE Seed TW_OTF"/"LINE Seed TW_TTF"。
+-->
+<style>
+  :root{--blue:#1D4A82;--navy:#14203C;--bluelt:#7DAEF9;--orange:#F19D48;--green:#A9CB75;--bg:#EDEEF3;--muted:#67727E;--line:#D7DCE4;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{margin:0;font-family:"Noto Sans TC",-apple-system,"PingFang TC",sans-serif}
+  .slide{width:1280px;height:720px;background:var(--bg);position:relative;overflow:hidden}
+  .corner-rect{position:absolute;left:64px;top:0;width:78px;height:30px;background:var(--blue)}
+  .footer{position:absolute;left:0;right:0;bottom:0;height:40px;background:var(--blue);display:flex;align-items:center}
+  .footer .brand{color:#fff;font-size:15px;font-weight:600;margin-left:40px;letter-spacing:.02em}
+  .footer .pageno{position:absolute;right:24px;color:#fff;font-size:14px;font-weight:700}
+  .kicker{position:absolute;left:64px;top:46px;font-size:13px;font-weight:700;color:var(--orange);letter-spacing:.18em}
+  .title{position:absolute;left:64px;top:70px}
+  .title h1{font-size:32px;font-weight:800;color:var(--navy);font-family:"Noto Sans TC",sans-serif}
+  .title .sub{font-size:16px;color:var(--muted);margin-top:8px}
+
+  /* === 左側面向列表（可省，或改成任何說明） === */
+  .facets{position:absolute;left:64px;top:180px;width:640px}
+  .facet{border-top:1px solid var(--line);padding:20px 0 20px 26px;position:relative;display:flex;align-items:center;gap:24px}
+  .facet:last-child{border-bottom:1px solid var(--line)}
+  .facet .tab{position:absolute;left:0;top:24px;width:6px;height:40px;background:var(--orange)}
+  .facet:nth-child(2) .tab{background:var(--blue)} .facet:nth-child(3) .tab{background:var(--bluelt)} .facet:nth-child(4) .tab{background:var(--green)}
+  .facet .lb{font-size:20px;font-weight:800;color:var(--navy);width:120px;flex:none}
+  .facet .ds{font-size:15px;color:var(--muted);line-height:1.4}
+
+  /* === 右側關係圖（SVG） === */
+  .cluster{position:absolute;right:24px;top:150px;width:560px;height:470px}
+  .nlabel{font-family:"Noto Sans TC",sans-serif;font-weight:700;fill:var(--navy);font-size:15px;text-anchor:middle;dominant-baseline:middle}
+  .clabel{font-weight:800;fill:#fff;font-size:20px;text-anchor:middle;dominant-baseline:middle}
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="corner-rect"></div>
+    <div class="kicker">{{SECTION LABEL}}</div>
+    <div class="title"><h1>{{主標題}}</h1><div class="sub">{{副標題 ‧ Subtitle}}</div></div>
+
+    <!-- 左：面向列表（可依需求增減 / 整塊移除，讓關係圖置中） -->
+    <div class="facets">
+      <div class="facet"><span class="tab"></span><span class="lb">{{面向一}}</span><span class="ds">{{說明}}</span></div>
+      <div class="facet"><span class="tab"></span><span class="lb">{{面向二}}</span><span class="ds">{{說明}}</span></div>
+      <div class="facet"><span class="tab"></span><span class="lb">{{面向三}}</span><span class="ds">{{說明}}</span></div>
+      <div class="facet"><span class="tab"></span><span class="lb">{{面向四}}</span><span class="ds">{{說明}}</span></div>
+    </div>
+
+    <!-- 右：中心 + 衛星關係圖。中心(280,235)；衛星圓 r46、中心圓 r64；虛線先畫，圓後畫蓋住線端 -->
+    <svg class="cluster" viewBox="0 0 560 470">
+      <!-- 連接線（先畫，被圓蓋住線端＝乾淨） -->
+      <line x1="280" y1="235" x2="96"  y2="86"  stroke="var(--bluelt)" stroke-width="1.5" stroke-dasharray="5 5"/>
+      <line x1="280" y1="235" x2="470" y2="92"  stroke="var(--bluelt)" stroke-width="1.5" stroke-dasharray="5 5"/>
+      <line x1="280" y1="235" x2="392" y2="404" stroke="var(--bluelt)" stroke-width="1.5" stroke-dasharray="5 5"/>
+      <!-- 衛星 -->
+      <circle cx="96"  cy="86"  r="46" fill="#fff" stroke="var(--bluelt)" stroke-width="2"/>
+      <text class="nlabel" x="96"  y="86">{{衛星一}}</text>
+      <circle cx="470" cy="92"  r="46" fill="#fff" stroke="var(--orange)" stroke-width="2"/>
+      <text class="nlabel" x="470" y="92">{{衛星二}}</text>
+      <circle cx="392" cy="404" r="46" fill="#fff" stroke="var(--green)" stroke-width="2"/>
+      <text class="nlabel" x="392" y="404">{{衛星三}}</text>
+      <!-- 中心 -->
+      <circle cx="280" cy="235" r="64" fill="var(--blue)"/>
+      <text class="clabel" x="280" y="235">{{中心概念}}</text>
+    </svg>
+
+    <div class="footer"><div class="brand">AlleyPin</div><div class="pageno">{{頁碼}} / {{總頁數}}</div></div>
+  </div>
+</body>
+</html>

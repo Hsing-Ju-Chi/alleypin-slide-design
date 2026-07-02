@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>AlleyPin 流程鏈（膠囊 + 箭頭）</title>
+<!--
+  流程鏈：一排膠囊用橘色箭頭串起，表達「循序、朝終點前進」的過程 / 漏斗 / 旅程。
+  用法判斷：
+   - 只給「循序」關係用（有先後、有箭頭）；「並列」項目請改用 content-page 的卡片，別硬串。
+   - 步驟 3–6 個最舒服；7–8 個把字級縮小、膠囊變窄仍可（見下方註解）；再多就分兩頁或換版。
+   - 每個膠囊可只放一行標題，或「標題 + 一行說明」。最後一站用深藍實心強調終點。
+  字體：標題預設 Noto Sans TC；PPTX/Keynote 可改 "LINE Seed TW_OTF"/"LINE Seed TW_TTF"。
+  ⚠️ 轉 PPTX/Keynote（pptxgenjs）時：膠囊=roundRect、箭頭=triangle(rotate 90)。此處是水平箭頭沒有斜線；
+     若像 node-cluster 那樣畫「斜線」連接，pptx 的 line 需用 flipV 處理方向（見 node-cluster.html 與 SKILL.md）。
+-->
+<style>
+  :root{--blue:#1D4A82;--navy:#14203C;--bluelt:#7DAEF9;--orange:#F19D48;--green:#A9CB75;--bg:#EDEEF3;--muted:#67727E;--cardln:#E7EAF0;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{margin:0;font-family:"Noto Sans TC",-apple-system,"PingFang TC",sans-serif}
+  .slide{width:1280px;height:720px;background:var(--bg);position:relative;overflow:hidden}
+  .corner-rect{position:absolute;left:64px;top:0;width:78px;height:30px;background:var(--blue)}
+  .footer{position:absolute;left:0;right:0;bottom:0;height:40px;background:var(--blue);display:flex;align-items:center}
+  .footer .brand{color:#fff;font-size:15px;font-weight:600;margin-left:40px;letter-spacing:.02em}
+  .footer .pageno{position:absolute;right:24px;color:#fff;font-size:14px;font-weight:700}
+  .kicker{position:absolute;left:64px;top:46px;font-size:13px;font-weight:700;color:var(--orange);letter-spacing:.18em}
+  .title{position:absolute;left:64px;top:70px}
+  .title h1{font-size:32px;font-weight:800;color:var(--navy);font-family:"Noto Sans TC",sans-serif}
+  .title .sub{font-size:16px;color:var(--muted);margin-top:8px}
+
+  /* === 流程鏈 === */
+  .chain{position:absolute;left:64px;right:64px;top:260px;display:flex;align-items:stretch}
+  .step{flex:1;background:#fff;border:1px solid var(--cardln);border-radius:16px;
+        padding:22px 12px;text-align:center;display:flex;flex-direction:column;justify-content:center;min-height:118px}
+  .step .t{font-size:18px;font-weight:800;color:var(--navy);line-height:1.2}
+  .step .s{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.3}
+  .step.last{background:var(--blue);border-color:var(--blue)}
+  .step.last .t{color:#fff} .step.last .s{color:#D6E2F2}
+  .arrow{flex:none;width:34px;align-self:center;display:flex;justify-content:center}
+  .arrow::after{content:"";width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:14px solid var(--orange)}
+
+  .band{position:absolute;left:64px;right:64px;top:452px;background:var(--blue);border-radius:12px;padding:22px 30px;color:#fff;font-size:18px;line-height:1.5}
+  .band b{color:var(--orange)}
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="corner-rect"></div>
+    <div class="kicker">{{SECTION LABEL}}</div>
+    <div class="title"><h1>{{主標題}}</h1><div class="sub">{{副標題 ‧ Subtitle}}</div></div>
+
+    <!-- 步驟：複製 .step，末站加 class="last"；箭頭 .arrow 夾在中間。標題必填、.s 說明可省 -->
+    <div class="chain">
+      <div class="step"><div class="t">{{步驟一}}</div><div class="s">{{說明}}</div></div>
+      <div class="arrow"></div>
+      <div class="step"><div class="t">{{步驟二}}</div><div class="s">{{說明}}</div></div>
+      <div class="arrow"></div>
+      <div class="step"><div class="t">{{步驟三}}</div><div class="s">{{說明}}</div></div>
+      <div class="arrow"></div>
+      <div class="step last"><div class="t">{{終點}}</div><div class="s">{{說明}}</div></div>
+    </div>
+
+    <div class="band">{{重點訊息帶，可用 <b>橘色</b> 強調流程的核心觀念}}</div>
+
+    <div class="footer"><div class="brand">AlleyPin</div><div class="pageno">{{頁碼}} / {{總頁數}}</div></div>
+  </div>
+</body>
+</html>
