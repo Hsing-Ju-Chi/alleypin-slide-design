@@ -169,6 +169,15 @@ HTML 模板則用 `<img src="assets/...">`。
 footer 的「AlleyPin」用文字即可（Noto Sans TC）；封面左下、封底 lockup 用 logo 圖。內容頁通常不放 logo。
 **⚠️ 置入務必等比、別硬寫不合比例的 w×h（會被拉扁 / 拉長，PPTX / Keynote / Google 簡報都會）**：HTML 只設**單邊**（`width` 或 `height`，另一邊 auto，模板已這樣）；pptxgenjs 給寬度、**`高 = 寬 / 4.07`**，或用 `pngSize` 讀原圖等比。任何圖片（icon / illus / IP）同理。
 
+**pptxgenjs 安全寫法（照抄，別自己填兩個數字）**：
+```js
+const R=4.071;                       // logo 原始比例 855/210
+const H=42;                          // 想要的高度(px)，只決定「一個」數字
+s.addImage({path:LOGO, x:u(96), y:u(620), h:u(H), w:u(H*R)});   // 寬一律由比例算
+// 最保險：直接用素材段的 imgH（讀 PNG 原尺寸等比）→ imgH(s,LOGO,96,620,42)
+```
+**只准決定寬或高其中一個，另一個永遠用比例／讀檔算出來。** 一旦你手上同時出現兩個寫死的數字，就是變形的開始。
+
 ## 產出與轉檔
 
 > **🔒 硬性要求：交付檔一律「可編輯」，絕不接受截圖 / 圖片版。**
