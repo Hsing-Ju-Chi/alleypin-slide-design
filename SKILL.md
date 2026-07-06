@@ -4,7 +4,7 @@ description: Use when creating, designing, or producing an AlleyPin-branded pres
 ---
 
 # AlleyPin 簡報設計規範
-*最後更新：2026.7.3*
+*最後更新：2026.7.6*
 
 AlleyPin 品牌簡報 = **深藍主調 + 幾何色塊 + 橘色點綴**，乾淨、專業、留白足。
 用 HTML 當製作原稿（1280×720 / 16:9），再轉成 PPTX、Google 簡報或 Keynote。
