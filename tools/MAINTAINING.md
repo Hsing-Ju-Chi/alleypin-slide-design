@@ -38,5 +38,7 @@
 
 - 封面幾何 freehand 重畫 → 跑版（2026-07 同事實測，HTML 與 Google 簡報都中）→「整段複製 SVG」＋分款幾何驗收＋pptxgenjs 照抄 block。
 - 幾何驗收只寫封面 A 的「一直條」→ 封面 B 無從驗、還會被誤判 → 分款驗收（2026-07-09）。
+- 字級單位混淆：公版 Keynote 畫布是 1920×1080pt、skill 網格是 1280×720px、舊 pptx 版面在 Keynote 顯示 960×540 → 同一個「主標」有三種數字，跨團隊溝通必錯（2026-07-09 實際發生）→ 統一 pptx 版面 26.667×15in（Keynote 顯示 1920×1080），規範以 Keynote pt 為準、HTML px = pt×⅔。
+- CSS `line-height` 直接抄進 pptxgenjs `lineSpacingMultiple` → Keynote 行距虛胖 ~1.46 倍（Noto Sans TC 實測）→ 規範行距 1.1–1.3 直接給，禁止搬 CSS 值。
 - logo 寫死 w×h → 拉伸變形 → 等比安全寫法。
 - 交付截圖版 → 不可編輯 → pptxgenjs 原生物件硬性要求。

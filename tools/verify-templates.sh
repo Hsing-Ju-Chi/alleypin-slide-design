@@ -44,7 +44,7 @@ h = ImageChops.difference(a, b).convert("L").histogram()
 total = a.size[0] * a.size[1]
 big = sum(h[9:])          # 通道差 >8 的像素（>8 可排除 Chrome 版本間的次像素抗鋸齒漂移）
 pct = big / total * 100
-LIMIT = 1.0               # 超過 1% 實質差異＝有東西真的動了
+LIMIT = 0.3               # 超過 0.3% 實質差異＝有東西真的動了（實測：Chrome 版本 AA 漂移 ~0.05%；字級微調 0.5%+；幾何跑版 2%+）
 if pct > LIMIT:
     print(f"❌ {name}：{pct:.2f}% 像素偏離基準（>{LIMIT}%）——版面被改動或改壞了")
     sys.exit(1)
