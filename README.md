@@ -1,5 +1,5 @@
 # AlleyPin 簡報設計規範 skill
-*最後更新：2026.7.6*
+*最後更新：2026.7.9*
 
 讓 Claude 產出**符合 AlleyPin 品牌**的簡報（封面、內容頁），適用任何主題。
 這個 skill 只負責「**讓它看起來、讀起來是 AlleyPin**」——色彩、字體、封面、版面框架、logo、文案寫法；
@@ -37,6 +37,7 @@ Claude 會：
 | `templates/content-rows.html` | 內容頁框架（滿版橫向 row，大氣版；已填真實文案當範例） |
 | `templates/closing-page.html` | 封底 / Thank You 頁（logo lockup＋聯絡人＋聯絡頁尾） |
 | `assets/` | 官方 logo（藍 / 白去背） |
+| `tools/` | 維護者專用：模板回歸測試、發佈打包、維護手冊（`MAINTAINING.md`）。同事不用管，zip 裡也不會有 |
 
 ## 注意
 
