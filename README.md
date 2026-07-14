@@ -1,5 +1,5 @@
 # AlleyPin 簡報設計規範 skill
-*最後更新：2026.7.9*
+*最後更新：2026.7.14*
 
 讓 Claude 產出**符合 AlleyPin 品牌**的簡報（封面、內容頁），適用任何主題。
 這個 skill 只負責「**讓它看起來、讀起來是 AlleyPin**」——色彩、字體、封面、版面框架、logo、文案寫法；
@@ -7,7 +7,7 @@
 
 ## 安裝
 
-> 🔰 **第一次安裝、或要給同事 → 請看 `安裝教學.md`**（新手逐步版，含工具建議：✅ Claude Chat / Codex / Manus AI；⚠️ Claude Code 需 Pro；❌ ChatGPT 不建議）。下面是快速版。
+> 🔰 **第一次安裝、或要給同事 → 請看 `安裝教學.md`**（新手逐步版，含工具建議：✅ Claude Chat / Codex（含 ChatGPT 桌面 App 的 Codex 模式）/ Manus AI；⚠️ Claude Code 需 Pro；網頁版 ChatGPT 只能當參考用）。下面是快速版。
 
 **Claude Code（終端）**：把整個 `alleypin-slide-design/` 資料夾放到 `~/.claude/skills/`。
 
@@ -35,8 +35,10 @@ Claude 會：
 | `templates/cover-b.html` | 封面 B（全藍幾何拼塊） |
 | `templates/content-page.html` | 內容頁框架（並排卡版型） |
 | `templates/content-rows.html` | 內容頁框架（滿版橫向 row，大氣版；已填真實文案當範例） |
+| `templates/flow-chain.html` | 流程鏈（膠囊＋橘箭頭，循序過程 / 漏斗 / 旅程） |
+| `templates/node-cluster.html` | 節點關係圖（中心概念＋衛星，圍繞核心的關聯） |
 | `templates/closing-page.html` | 封底 / Thank You 頁（logo lockup＋聯絡人＋聯絡頁尾） |
-| `assets/` | 官方 logo（藍 / 白去背） |
+| `assets/` | 官方 logo（藍 / 白去背）；full 版另含 icons / 插圖 / IP 素材庫與 `ASSET-INDEX.md` |
 | `tools/` | 維護者專用：模板回歸測試、發佈打包、維護手冊（`MAINTAINING.md`）。同事不用管，zip 裡也不會有 |
 
 ## 注意
