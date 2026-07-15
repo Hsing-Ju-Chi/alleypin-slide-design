@@ -29,6 +29,16 @@ zip -rq "$FULL" "$BASE" \
 
 echo "③ 完成："
 ls -lh "$LITE" "$FULL"
+
+echo "④ 檔數檢查（上傳型安裝有 200 檔硬上限，2026-07 同事實測撞過）…"
+FULL_N=$(unzip -l "$FULL" | tail -1 | awk '{print $2}')
+REPO_N=$(git -C "$DIR" ls-files | wc -l | tr -d ' ')
+echo "  full zip 條目數：$FULL_N；GitHub 整包（貼網址安裝會抓的）檔數：$REPO_N"
+if [ "$FULL_N" -gt 195 ] || [ "$REPO_N" -gt 195 ]; then
+  printf '\033[1;31m⚠️  超過/逼近 200 檔上限——「貼 GitHub 網址」與「上傳 full zip」都會失敗！\033[0m\n'
+  echo "   full 版只能走資料夾安裝：終端機 git clone 到 ~/.claude/skills/（見 安裝教學.md）"
+  echo "   lite zip 不受影響，上傳型環境（Claude Chat 等）照用"
+fi
 echo ""
 echo "接下來（照 tools/MAINTAINING.md 的發佈清單）："
 echo "  - 把兩個 zip 發給同事、請他們「重新安裝」"
