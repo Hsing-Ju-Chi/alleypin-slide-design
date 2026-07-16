@@ -4,6 +4,7 @@
 set -euo pipefail
 DIR="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="${1:-$HOME/Desktop}"
+mkdir -p "$OUT"
 STAMP="$(date +%Y%m%d)"
 
 echo "① 回歸測試…"
@@ -37,7 +38,8 @@ FULL_N=$(unzip -l "$FULL" | tail -1 | awk '{print $2}')
 REPO_N=$(git -C "$DIR" ls-files | wc -l | tr -d ' ')
 echo "  full zip 條目數：$FULL_N；GitHub 整包（貼網址安裝會抓的）檔數：$REPO_N"
 if [ "$FULL_N" -gt 150 ] || [ "$REPO_N" -gt 150 ]; then
-  printf '\033[1;31m❌ 檔數超過 150 安全線（上限 200）——發佈中止！\033[0m\n'
+  rm -f "$LITE" "$FULL"   # 刪掉剛打的 zip，確保壞包不會被誤發
+  printf '\033[1;31m❌ 檔數超過 150 安全線（上限 200）——發佈中止、zip 已刪！\033[0m\n'
   echo "   多半是素材散檔被 git add 進來了。素材一律只進 assets/visual-assets.zip："
   echo "   1) 把散檔放回 assets/{icons,illus,ip}/（已在 .gitignore）"
   echo "   2) bash assets/sync-visual-assets.sh   ← 會重建索引＋重打包 visual-assets.zip"
