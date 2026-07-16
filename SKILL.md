@@ -4,7 +4,7 @@ description: Use when creating, designing, or producing an AlleyPin-branded pres
 ---
 
 # AlleyPin 簡報設計規範
-*最後更新：2026.7.14*
+*最後更新：2026.7.16*
 
 AlleyPin 品牌簡報 = **深藍主調 + 幾何色塊 + 橘色點綴**，乾淨、專業、留白足。
 用 HTML 當製作原稿（1280×720 / 16:9），再轉成 PPTX、Google 簡報或 Keynote。
@@ -187,6 +187,14 @@ s.addShape("rect",{x:u(1147),y:u(423),w:u(133),h:u(297),fill:{color:"1C3667"}});
 > **穩定可用：Claude Code / Codex（Mac；Codex 含 ChatGPT 桌面 App 的 Codex 模式，2026/7 起兩者合併）**。**Claude Chat 只建議用核心規範**，素材置入不穩（雲端跑不了 Keynote、置圖不可靠）；**Manus / 網頁版 ChatGPT 拉不到本機素材，用不了這段**。
 > **成本提醒**：素材置入要讀尺寸、逐圖等比擺放、還要 render 檢查，**比純文字版慢、吃較多 token**。趕時間或純文字環境就跳過，先把版面與內容做好。
 > **發佈**：本 skill 切兩個 zip——`lite`（不含素材，給 Claude Chat / Manus / 網頁版 ChatGPT）、`full`（含素材，給 Claude Code / Codex——含 ChatGPT 桌面 App 的 Codex）。
+
+**⚠️ 用素材前先解壓（一次就好）**：素材以單一 `assets/visual-assets.zip` 隨 skill 發佈（散檔不進 git，避開 skill 安裝的 200 檔上限）。若 `assets/icons/` 不存在或是空的，先跑：
+
+```bash
+cd <skill 資料夾>/assets && unzip -nq visual-assets.zip
+```
+
+解壓後才有 `icons/`、`illus/`、`ip/` 散檔可 `addImage`。`-n` 不覆蓋既有檔，重跑無害。
 
 **素材庫**（挑圖用 `assets/ASSET-INDEX.md` 語意比對）：
 - `assets/icons/`（89）：深灰線稿＋橘點綴，放白卡 / 卡片右上角。`icon-doctor`、`icon-line`、`icon-shield-check`…

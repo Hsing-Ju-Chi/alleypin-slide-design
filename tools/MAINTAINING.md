@@ -23,6 +23,15 @@
 5. 更新三份文件開頭的 `*最後更新：YYYY.M.D*`（README / SKILL / 安裝教學，日期用 `date` 查）。
 6. Commit（訊息寫「防什麼坑」，讓 git log 能當失誤資料庫用）。
 
+## 🔴 檔數紅線（動素材前必讀；違反＝同事裝不起來）
+
+skill 安裝功能（貼 GitHub 網址 / 上傳 zip）有 **200 檔硬上限**（2026-07 同事實測撞過）。因此：
+
+1. **素材散檔（icons / illus / ip 的 PNG）永遠不進 git**——只進單一 `assets/visual-assets.zip`。三個散檔資料夾已在 `.gitignore`，是本機工作副本。
+2. **新增 / 更新素材的唯一正路**：把 PNG 放進 `assets/{icons,illus,ip}/` → 跑 `bash assets/sync-visual-assets.sh`（自動重建索引＋重打包 zip）→ commit 的只有 `visual-assets.zip` 和 `ASSET-INDEX.md`。
+3. **絕對禁止** `git add assets/icons` 之類把散檔加回追蹤。`tools/release.sh` 有硬檢查：追蹤檔或 full zip 超過 **150（安全線）** 直接發佈失敗並印出修復步驟。
+4. 快速自查：`git ls-files | wc -l` 應在 **30 上下**；三位數＝出事了，照 release.sh 失敗訊息修。
+
 ## 發佈檢查清單（每次要給同事新版時）
 
 - [ ] `bash tools/verify-templates.sh` 全綠
@@ -42,3 +51,4 @@
 - CSS `line-height` 直接抄進 pptxgenjs `lineSpacingMultiple` → Keynote 行距虛胖 ~1.46 倍（Noto Sans TC 實測）→ 規範行距 1.1–1.3 直接給，禁止搬 CSS 值。
 - logo 寫死 w×h → 拉伸變形 → 等比安全寫法。
 - 交付截圖版 → 不可編輯 → pptxgenjs 原生物件硬性要求。
+- 素材 181 散檔直接進 git → repo 206 檔，同事貼網址 / 上傳 zip 安裝撞 200 檔上限（2026-07-15 實測）→ 散檔改打包單一 `visual-assets.zip`（repo 降到 ~26 檔）＋ release.sh 檔數硬檢查（>150 發佈失敗）＋ SKILL.md 首用解壓指令。**驗證教訓：發佈驗收要驗到「對方裝得起來」，不是 zip 產出來就算。**

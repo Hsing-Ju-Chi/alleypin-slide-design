@@ -35,3 +35,7 @@ IDX="$AST/ASSET-INDEX.md"
   ( cd "$AST/ip" && ls *.png 2>/dev/null | sed 's/^/- /' )
 } > "$IDX"
 echo "已重建索引：$IDX（icons $(ls "$AST/icons"/*.png 2>/dev/null|wc -l|tr -d ' ') / illus $(ls "$AST/illus"/*.png 2>/dev/null|wc -l|tr -d ' ') / ip $(ls "$AST/ip"/*.png 2>/dev/null|wc -l|tr -d ' '))"
+
+# 重打包 visual-assets.zip（repo 只追蹤這個 zip，散檔不進 git——躲 skill 安裝的 200 檔上限）
+( cd "$AST" && rm -f visual-assets.zip && zip -rq visual-assets.zip icons illus ip -x "*.DS_Store" )
+echo "已重打包：$AST/visual-assets.zip（$(unzip -l "$AST/visual-assets.zip" | tail -1 | awk '{print $2}') 條目）"
